@@ -14,7 +14,7 @@
   let traillistList = [];
   let selectedTraillist = "";
 
-  let paymentMethods = ["Paypal", "Cash"];
+  let paymentMethods = ["paypal", "direct"];
   let selectedMethod = "";
 
   let message = "Please add a new trail";

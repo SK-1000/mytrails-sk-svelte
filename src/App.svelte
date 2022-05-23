@@ -8,6 +8,7 @@
   import Addtrail from "./pages/Addtrail.svelte";
   import Router from "svelte-spa-router";
   import Map from "./pages/Map.svelte";
+  import Charts from "./pages/Charts.svelte";
 
   setContext("TrailService", new TrailService("http://localhost:4000"));
 
@@ -18,6 +19,7 @@
     "/addtrail": Addtrail,
     "/report": Report,
     "/map": Map,
+    "/charts": Charts,
     "/logout": Main
   }
 </script>
