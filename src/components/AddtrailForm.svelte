@@ -1,7 +1,13 @@
 <script>
-  import {getContext, onMount} from "svelte";
+  import Coordinates from "./Coordinates.svelte";
+  import {createEventDispatcher, getContext, onMount} from "svelte";
+
+  const dispatch = createEventDispatcher();
 
   const trailService = getContext("TrailService");
+
+  let lat = 52.160858;
+  let lng = -7.152420;
 
   let amount = 0;
 
@@ -17,6 +23,7 @@
     traillistList = await trailService.getTraillists()
   });
 
+
   async function addtrail() {
     if (selectedTraillist && amount && selectedMethod) {
       const traillistNames = selectedTraillist.split(',');
@@ -25,15 +32,20 @@
         amount: amount,
         method: selectedMethod,
         traillist: traillist._id,
+        lat: lat,
+        lng: lng
       };
       const success = await trailService.addtrail(trail);
       if (!success) {
         message = "This Trail has not been added - some error occurred";
         return;
       }
-      message = `Thanks! You added a trail called ${amount} to ${traillist.firstName} ${traillist.lastName}`;
+      message = `Thanks! You have added a trail called ${amount} to ${traillist.firstName} ${traillist.lastName}`;
+      dispatch("message", {
+        trail: trail,
+      });
     } else {
-      message = "Please add trail details";
+      message = "Please select trail details";
     }
   }
 </script>
@@ -60,6 +72,7 @@
     </div>
   </div>
   <div class="field">
+    <Coordinates bind:lat={lat} bind:lng={lng}/>
     <div class="control">
       <button class="button is-link is-light">Add Trail</button>
     </div>
