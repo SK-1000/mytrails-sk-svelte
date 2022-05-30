@@ -21,7 +21,7 @@
       console.log(lon, lat);
       axios //send a http get request to openweathermap api to fetch data
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=6832d9c1371de3a120195ed1fb73c729`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=######################`
         )
         .then(data => {
           //get data upone a sucsessfull response
