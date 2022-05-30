@@ -17,13 +17,13 @@
     function populateByTraillist(trailList, traillists) {
       totalByTraillist.labels = [];
       traillists.forEach(traillist => {
-        totalByTraillist.labels.push(`${traillist.lastName}, ${traillist.firstName}`)
+        totalByTraillist.labels.push(`${traillist.title}`)
         totalByTraillist.datasets[0].values.push(0);
       })
       traillists.forEach((traillist, i) => {
         trailList.forEach(trail => {
           if (trail.traillist._id == traillist._id) {
-            totalByTraillist.datasets[0].values[i] += trail.amount;
+            totalByTraillist.datasets[0].values[i] += trail.distancekm;
           }
         });
       });

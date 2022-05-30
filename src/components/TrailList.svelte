@@ -11,8 +11,9 @@
 
 <table class="table is-fullwidth">
   <thead>
-    <th>Amount</th>
-    <th>Method</th>
+    <th>Trail Name</th>
+    <th>Distance Km</th>
+    <th>Terrain Description</th>
     <th>Traillist</th>
     <th>Trailfinder</th>
   </thead>
@@ -20,13 +21,16 @@
     {#each trailList as trail}
       <tr>
         <td>
-          {trail.amount}
+          {trail.trailname}
         </td>
         <td>
-          {trail.method}
+          {trail.distancekm}
         </td>
         <td>
-          {trail.traillist.lastName}, {trail.traillist.firstName}
+          {trail.terraindescription}
+        </td>
+        <td>
+          {trail.traillist.title}
         </td>
         <td>
           {trail.trailfinder.lastName},  {trail.trailfinder.firstName}

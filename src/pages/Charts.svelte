@@ -2,7 +2,7 @@
     import TitleBar from "../components/TitleBar.svelte";
     import MainNavigator from "../components/MainNavigator.svelte";
     import TrailsByTraillist from "../components/TrailsByTraillist.svelte";
-    import TrailsByMethod from "../components/TrailsByMethod.svelte";
+    import TrailsByTerrainDescription from "../components/TrailsByTerrainDescription.svelte";
   </script>
   
   <div class="columns is-vcentered">
@@ -16,7 +16,7 @@
   
   <div class="columns">
     <div class="column has-text-centered">
-      <TrailsByMethod/>
+      <TrailsByTerrainDescription/>
     </div>
     <div class="column has-text-centered">
       <TrailsByTraillist/>

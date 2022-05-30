@@ -2,20 +2,26 @@
   import Coordinates from "./Coordinates.svelte";
   import {createEventDispatcher, getContext, onMount} from "svelte";
 
+
+
   const dispatch = createEventDispatcher();
+
+
 
   const trailService = getContext("TrailService");
 
   let lat = 52.160858;
   let lng = -7.152420;
 
-  let amount = 0;
+  let trailname = "";
+
+  let distancekm = 0;
 
   let traillistList = [];
   let selectedTraillist = "";
 
-  let paymentMethods = ["paypal", "direct"];
-  let selectedMethod = "";
+  let terraindescriptions = ["steep", "flat", "hills", "forest", "rural", "steps", "shoreline"];
+  let selectedTerrainDescription = "";
 
   let message = "Please add a new trail";
 
@@ -25,12 +31,14 @@
 
 
   async function addtrail() {
-    if (selectedTraillist && amount && selectedMethod) {
-      const traillistNames = selectedTraillist.split(',');
-      const traillist = traillistList.find(traillist => traillist.lastName == traillistNames[0] && traillist.firstName == traillistNames[1]);
+    if (selectedTraillist && distancekm && selectedTerrainDescription) {
+      // const traillistNames = selectedTraillist.split(',');
+      // const traillist = traillistList.find(traillist => traillist.lastName == traillistNames[0] && traillist.firstName == traillistNames[1]);
+      const traillist = traillistList.find(traillist => traillist.title);
       const trail = {
-        amount: amount,
-        method: selectedMethod,
+        trailname: trailname,
+        distancekm: distancekm,
+        terraindescription: selectedTerrainDescription,
         traillist: traillist._id,
         lat: lat,
         lng: lng
@@ -40,7 +48,7 @@
         message = "This Trail has not been added - some error occurred";
         return;
       }
-      message = `Thanks! You have added a trail called ${amount} to ${traillist.firstName} ${traillist.lastName}`;
+      message = `Thanks! You have added a trail called ${trailname} to the ${traillist.title} trail list`;
       dispatch("message", {
         trail: trail,
       });
@@ -52,13 +60,15 @@
 
 <form on:submit|preventDefault={addtrail}>
   <div class="field">
-    <label class="label" for="amount">Enter Amount</label> <input bind:value={amount} class="input" id="amount"
-                                                                  name="amount" placeholder="Euros" type="number">
+    <label class="label" for="trailname">Enter Trail Name</label> <input bind:value={trailname} class="input" id="trailname"
+                                                                  name="trailname" type="string">
+    <label class="label" for="distancekm">Enter Trail Distance</label> <input bind:value={distancekm} class="input" id="distancekm"
+                                                                  name="distancekm" type="number">
   </div>
   <div class="field">
     <div class="control">
-      {#each paymentMethods as method}
-        <input bind:group={selectedMethod} class="radio" type="radio" value="{method}"> {method}
+      {#each terraindescriptions as terraindescription}
+        <input bind:group={selectedTerrainDescription} class="radio" type="radio" value="{terraindescription}"> {terraindescription}
       {/each}
     </div>
   </div>
@@ -66,7 +76,7 @@
     <div class="select">
       <select bind:value={selectedTraillist}>
         {#each traillistList as traillist}
-          <option>{traillist.lastName},{traillist.firstName}</option>
+          <option>{traillist.title}</option>
         {/each}
       </select>
     </div>
@@ -79,6 +89,9 @@
   </div>
   <div class="section">
     {message}
+  </div>
+  <div class="section">
+
   </div>
 </form>
 

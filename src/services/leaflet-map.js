@@ -66,7 +66,7 @@ export class LeafletMap {
   }
 
   zoomTo(location) {
-    this.imap.setView(new L.LatLng(location.lat, location.lng), 8);
+    this.imap.setView(new L.LatLng(location.lat, location.lng), 15);
   }
 
   addMarker(location, popupText = "", layerTitle = "default") {

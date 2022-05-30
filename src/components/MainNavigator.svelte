@@ -11,6 +11,9 @@
   <a href="/#/charts" class="column is-2 mx-2">
     <i class="fas fa-chart-line fa-3x" style="color:rgb(149, 93, 176)"></i>
   </a>
+  <a href="/#/weather" class="column is-2 mx-2">
+    <i class="fa-solid fa-cloud-rainbow"  style="color:rgb(150, 93, 176)"></i>
+  </a>
   <a href="/#/logout" class="column is04">
     <i class="fas fa-sign-out-alt fa-3x" style="color:rgb(156, 70, 128)"></i>
   </a>

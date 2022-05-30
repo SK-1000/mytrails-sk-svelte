@@ -9,6 +9,7 @@
   import Router from "svelte-spa-router";
   import Map from "./pages/Map.svelte";
   import Charts from "./pages/Charts.svelte";
+  import Weather from "./pages/Weather.svelte";
 
   setContext("TrailService", new TrailService("http://localhost:4000"));
 
@@ -20,6 +21,7 @@
     "/report": Report,
     "/map": Map,
     "/charts": Charts,
+    "/weather": Weather,
     "/logout": Main
   }
 </script>

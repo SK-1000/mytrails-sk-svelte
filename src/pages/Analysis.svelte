@@ -31,9 +31,9 @@ import TitleBar from "../components/TitleBar.svelte";
       let trailList = await trailService.getTrails();
       trailList.forEach(trail => {
         if (trail.method == "paypal") {
-          totalByMethod.datasets[0].values[0] += trail.amount
+          totalByMethod.datasets[0].values[0] += trail.distancekm
         } else if (trail.method == "direct") {
-          totalByMethod.datasets[0].values[1] += trail.amount
+          totalByMethod.datasets[0].values[1] += trail.distancekm
         }
       })
 

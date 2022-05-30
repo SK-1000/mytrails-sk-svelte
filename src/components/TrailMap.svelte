@@ -6,7 +6,7 @@ import {getContext, onMount} from "svelte";
 const trailService = getContext("TrailService");
 
 const mapConfig = {
-  location: {lat: 52.160858, lng: -7.152420},
+  location: {lat: 52.05956465, lng: -9.51803750819003},
   zoom: 8,
   minZoom: 1,
 };
@@ -27,10 +27,10 @@ onMount(async () => {
   });
 
 export function addTrailMarker(trail) {
-    const trailStr = `${trail.traillist.firstName} ${trail.traillist.lastName} €${trail.amount.toString()}`;
+    const trailStr = `${trail.trailname} ${trail.distancekm.toString()}km`;
     map.addMarker({lat: trail.lat, lng: trail.lng}, trailStr, "Trails");
     map.moveTo(11, {lat: trail.lat, lng: trail.lng});
   }
 </script>
 
-<div class="box" id="trail-map" style="height:800px"></div>
+<div class="box" id="trail-map" style="height:400px"></div>
