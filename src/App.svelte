@@ -11,7 +11,7 @@
   import Charts from "./pages/Charts.svelte";
   import Weather from "./pages/Weather.svelte";
 
-  setContext("TrailService", new TrailService("http://localhost:4000"));
+  setContext("TrailService", new TrailService("https://ancient-earth-27621.herokuapp.com"));
 
   let routes = {
     "/": Main,
