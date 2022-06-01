@@ -2,7 +2,7 @@ import axios from "axios";
 import {user} from "../stores";
 
 export class TrailService {
-  baseUrl = "https://ancient-earth-27621.herokuapp.com/";
+  baseUrl = "";
 
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
