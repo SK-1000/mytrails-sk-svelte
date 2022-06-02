@@ -18,9 +18,25 @@
       errorMessage = "Error Trying to sign up";
     }
   }
+
+  function validateMessageEmail(event) {
+       let textbox = event.target;
+       if (textbox.value === '') {
+            textbox.setCustomValidity('Required email address');
+        } else if (textbox.validity.typeMismatch){
+            textbox.setCustomValidity('please enter a valid email address');
+        } else {
+           textbox.setCustomValidity('');
+        }
+        return true;
+    }
+
 </script>
 
-<form on:submit|preventDefault={signup}>
+<form on:submit|preventDefault="{signup}"
+    on:invalid={validateMessageEmail}
+    on:change={validateMessageEmail}
+    on:input={validateMessageEmail}>
     <div class="field is-horizontal">
       <div class="field-body">
         <div class="field">
@@ -35,11 +51,11 @@
     </div>
     <div class="field">
       <label for="email" class="label">Email</label>
-      <input bind:value={email} id="email" class="input" type="text" placeholder="Enter email" name="email">
+      <input bind:value={email} required type="email" id="email" class="input" placeholder="Enter email" name="email">
     </div>
     <div class="field">
       <label for="password" class="label">Password</label>
-      <input bind:value={password} id="password" class="input" type="password" placeholder="Enter Password" name="password">
+      <input bind:value={password} id="password" class="input" required type="password" placeholder="Enter Password" name="password">
     </div>
     <div class="field is-grouped">
       <button class="button is-link">Sign Up</button>
