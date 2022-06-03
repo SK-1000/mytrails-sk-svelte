@@ -2,7 +2,8 @@
     import TitleBar from "../components/TitleBar.svelte";
     import MainNavigator from "../components/MainNavigator.svelte";
     import axios from "axios";
-
+    
+    var appid = "6832d9c1371de3a120195ed1fb73c729"
     var lat = ""; //store longitude variable
     var lon = ""; //store latitude variable
     var temp = ""; //store temp variable
@@ -15,7 +16,7 @@
       //submit handler function
       axios //send a http get request to openweathermap api to fetch data
         .get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=52.160858&lon=-7.152420&units=metric&appid=6832d9c1371de3a120195ed1fb73c729`
+          `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=metric&appid={appid}`
         )
         .then(data => {
           //get data upon a sucsessfull response
@@ -27,8 +28,8 @@
         })
         .catch(err => {
           //handle error
-          console.log(err.response);
-          window.alert(err.response.data.message); //alert to the user upon a api error
+          //console.log(err.response);
+          // window.alert(err.response.data.message); //alert to the user upon a api error
         });
     };
 
@@ -55,8 +56,8 @@
     
       </form>
   
-
-  <table class="ui celled table">
+      
+  <table class="table">
     <thead>
         <tr>
             <th> Temp </th>
@@ -66,11 +67,10 @@
     </thead>
     <tbody>
         <tr>
-            <td> {temp}hello   </td>
-            <td> {humidity}codej </td>
-            <td> {disc} jfskjfalsjdflksja</td>
+            <td> {temp}12&deg;</td> 
+            <td> {humidity}10%</td>
+            <td> {disc}test</td>
           </tr>
     </tbody>
   </table>
-  
-  
+ 

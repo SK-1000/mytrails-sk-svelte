@@ -14,6 +14,7 @@
 }
 	
 </script>
+
 <div id="app">
 	<h1>Upload Image</h1>
   

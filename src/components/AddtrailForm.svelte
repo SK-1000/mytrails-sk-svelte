@@ -32,8 +32,6 @@
 
   async function addtrail() {
     if (selectedTraillist && distancekm && selectedTerrainDescription) {
-      // const traillistNames = selectedTraillist.split(',');
-      // const traillist = traillistList.find(traillist => traillist.lastName == traillistNames[0] && traillist.firstName == traillistNames[1]);
       const traillist = traillistList.find(traillist => traillist.title);
       const trail = {
         trailname: trailname,
